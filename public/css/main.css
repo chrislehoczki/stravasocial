@@ -1,0 +1,138 @@
+body {
+  text-align: center;
+  font-family: "Oswald"  
+}
+
+
+
+
+
+.header {
+  /*background: url("../img/runners.jpg") no-repeat center center fixed;*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 400px;
+  width: 100%;
+}
+
+.logo {
+  padding-top: 120px;
+  margin-bottom: 30px;
+}
+
+.logo img {
+  display: inline-block;
+  height: 60px;
+  margin-top: -40px;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  display: inline-block;
+ color: black;
+  font-weight: 400;
+  font-size: 5em;
+  text-shadow: 5px 5px 5px gray;
+}
+
+.strava-btn {
+  margin-top: 20px;
+  width: 200px;
+  height: auto;
+}
+
+
+
+
+.header h3 {
+  font-size: 1.5em;
+  color: black;
+
+}
+
+#react-holder {
+  margin-top: 0px;
+}
+
+p { 
+  font-size: 1.1em;
+  color: black;
+  margin: 10px;
+}
+
+
+/* FOR DASHBOARD */
+.userdata {
+  margin-top: 30px;
+}
+
+.loader {
+  clear: both;
+  padding-top: 60px;
+  padding-bottom: 200px;
+  display: block;
+  margin: 0px auto;
+}
+
+/* FOR FOLLOWERS GRAPH */
+
+.link {
+  fill: none;
+  stroke: gray;
+  stroke-width: 1.5px;
+}
+
+.node circle {
+  fill: #ccc;
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+text {
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
+
+.red {
+  background-color: red;
+  fill: red;
+}
+
+.circle {
+  opacity: 0.4;
+}
+
+
+.btn {
+  margin: 20px;
+  padding: 10px;
+}
+/* FOR FOLLOWERS MAP */
+
+
+
+
+path {
+  stroke: white;
+  stroke-width: 0.25px;
+  fill: grey;
+}
+
+
+.map {
+  margin: 30px auto;
+  box-shadow: 0 0 10px 10px gray;
+}
+
+div.tooltip {   
+  position: absolute;           
+  padding: 2px;             
+  font: 12px;  
+  color: white;
+  text-align: center;
+  border: 1px solid black;       background: black;  
+  pointer-events: none;         
+}

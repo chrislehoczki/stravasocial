@@ -1,0 +1,4 @@
+node_modules/
+archived/
+.eslintrc
+.env
