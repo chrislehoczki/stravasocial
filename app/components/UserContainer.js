@@ -2,9 +2,7 @@
 
 
 var user = JSON.parse(document.getElementById("user").innerHTML)
-console.log("testing")
-console.log(user)
-console.log(user.strava)
+
 
 
 var ControlContainer = React.createClass({
@@ -91,7 +89,7 @@ var GlobalMap = React.createClass({
     },
 
     appendMap: function () {
-      console.log("being called")
+
       var myFollowers = this.props.data
 
   
@@ -178,8 +176,7 @@ function drawData () {
 
    var max = d3.max(data, function(d) { return d.followerNumber});
      var min = d3.min(data, function (d) { return d.followerNumber})
-    console.log(max)
-    console.log(min)
+
   var radiusScale = d3.scale.linear().domain([min, max]).range([1, 5])
 
     
@@ -297,7 +294,8 @@ var SocialNetwork = React.createClass({
 
 
       var followers = user.strava.followers;
-      console.log(followers)
+
+
 
 
 //CREATE FIRST OBJ
@@ -347,7 +345,8 @@ follower.followers.forEach(function(follower2) {
 
 })
 
-console.log(newLinks)
+
+
 
 
 
@@ -478,7 +477,8 @@ function tick() {
 
 function mouseover(d) {
     
-      console.log(d)
+
+
       if (!d.followerNumber) {
         d.followerNumber = "Unknown"
       }

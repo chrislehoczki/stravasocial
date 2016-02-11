@@ -2,9 +2,7 @@
 
 
 var user = JSON.parse(document.getElementById("user").innerHTML)
-console.log("testing")
-console.log(user)
-console.log(user.strava)
+
 
 
 
@@ -135,9 +133,8 @@ var SocialNetwork = React.createClass({
 
 
     appendGraph: function() {
-      console.log("append graph being called")
       this.setState({create: false})
-      console.log(this.state.create)
+
       var user = this.props.data;
       var newLinks = [];
       var followers = user.strava.followers;
@@ -192,7 +189,8 @@ var SocialNetwork = React.createClass({
 
       })
 
-      console.log(newLinks)
+
+
 
 
 
@@ -330,7 +328,8 @@ var SocialNetwork = React.createClass({
 
       function mouseover(d) {
 
-      console.log(d)
+
+
       if (!d.followerNumber) {
       d.followerNumber = "Unknown"
       }
@@ -477,8 +476,7 @@ function drawData () {
 
    var max = d3.max(data, function(d) { return d.followerNumber});
      var min = d3.min(data, function (d) { return d.followerNumber})
-    console.log(max)
-    console.log(min)
+
   var radiusScale = d3.scale.linear().domain([min, max]).range([1, 5])
 
     
