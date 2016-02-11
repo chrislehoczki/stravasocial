@@ -479,7 +479,7 @@ function mouseover(d) {
       tooltip.transition()
           .duration(200)
           .style("opacity", 0.7)
-      tooltip.html("Name: " + d.name + "<br>Country: " + d.country + "<br>Followers: " + d.followerNumber)
+      tooltip.html("Name: " + d.firstname + " " + d.lastname + "<br>Followers: " + d.followerNumber + "<br>Country: " + d.country + "<br>City: " + d.city)
           .style("left", (d3.event.pageX + 10) + "px")     
           .style("top", (d3.event.pageY - 28) + "px");   
 
