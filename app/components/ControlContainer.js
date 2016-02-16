@@ -73,7 +73,6 @@ var ControlContainer = React.createClass({
             </div>
 
             <p className="userdata"> Hi {user.strava.details.firstname} from {user.strava.details.city} </p>
-            <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world">Tweet Your Maps</a>
             <button className="btn btn-primary" onClick={this.setTab0}> See Your Athlete Social Network </button>
             <button className="btn btn-primary" onClick={this.setTab1}> View Your Global Follower Map </button>
             <a href="/logout" className="btn btn-primary"> Logout </a>
