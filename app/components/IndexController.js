@@ -532,7 +532,7 @@ var SocialNetwork = React.createClass({
       tooltip.transition()
       .duration(200)
       .style("opacity", 0.7)
-      tooltip.html(d.name + " " + d.lastname)
+      tooltip.html("Name: " + d.name + " " + d.lastname +  "<br>Country: " + d.country + "<br>Followers: " + d.followerNumber)
       .style("left", (d3.event.pageX + 10) + "px")     
       .style("top", (d3.event.pageY - 28) + "px");   
 
