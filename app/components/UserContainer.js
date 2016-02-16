@@ -16,7 +16,6 @@ var ControlContainer = React.createClass({
     componentDidMount: function() {
 
       var followers = changeCoord(user.strava.followers)
-
       var component = this;
       component.setState({graphData: user})
       component.setState({mapData: followers})

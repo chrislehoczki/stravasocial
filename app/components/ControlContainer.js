@@ -32,7 +32,7 @@ var ControlContainer = React.createClass({
             $.getJSON(url2, function(data) {
             console.log("received mapData")
 
-            var followers = changeCoord(data.strava.followers)
+            var followers = changeCoord(data)
 
 
             component.setState({mapData: followers})
