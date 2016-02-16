@@ -14,9 +14,12 @@ var ControlContainer = React.createClass({
     },
 
     componentDidMount: function() {
+
+      var followers = changeCoord(user.strava.followers)
+
       var component = this;
       component.setState({graphData: user})
-      component.setState({mapData: changeCoord(user.strava.followers)})
+      component.setState({mapData: followers})
       component.setState({tab: 0})
     },
 
