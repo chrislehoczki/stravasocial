@@ -388,9 +388,9 @@ var SocialNetwork = React.createClass({
 
       links.forEach(function(link) {
       //USER NODE
-      link.source = nodes[link.source] || (nodes[link.source] = {img: link.img, name: link.name, lastname: link.lastname, class: link.class});
+      link.source = nodes[link.source] || (nodes[link.source] = link);
       //FOLLOWER NODES
-      link.target = nodes[link.target] || (nodes[link.target] = {img: link.img, name: link.name, lastname: link.lastname});
+      link.target = nodes[link.target] || (nodes[link.target] = link);
       });
 
 

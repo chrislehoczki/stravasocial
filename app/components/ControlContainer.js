@@ -236,9 +236,9 @@ var SocialNetwork = React.createClass({
 
       links.forEach(function(link) {
       //USER NODE
-      link.source = nodes[link.source] || (nodes[link.source] = {img: link.img, name: link.name, lastname: link.lastname, class: link.class});
+      link.source = nodes[link.source] || (nodes[link.source] = link);
       //FOLLOWER NODES
-      link.target = nodes[link.target] || (nodes[link.target] = {img: link.img, name: link.name, lastname: link.lastname});
+      link.target = nodes[link.target] || (nodes[link.target] = link);
       });
 
 
@@ -369,8 +369,7 @@ var SocialNetwork = React.createClass({
       tooltip.transition()
       .duration(200)
       .style("opacity", 0.7)
-      tooltip.html(d.name + " " + d.lastname)
-      //tooltip.html("Name: " + d.name + " " + d.lastname +  "<br>Country: " + d.country + "<br>Followers: " + d.followerNumber)
+      tooltip.html("Name: " + d.name + " " + d.lastname +  "<br>Country: " + d.country + "<br>Followers: " + d.followerNumber)
       .style("left", (d3.event.pageX + 10) + "px")     
       .style("top", (d3.event.pageY - 28) + "px");   
 
