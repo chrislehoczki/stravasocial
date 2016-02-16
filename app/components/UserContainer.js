@@ -549,6 +549,11 @@ var GlobalMap = React.createClass({
     appendMap: function () {
       var myFollowers = this.state.data;
 
+       if (this.state.appended) {
+        return;
+      }
+
+      this.setState({appended: true})
   
 
     var width = "90%",

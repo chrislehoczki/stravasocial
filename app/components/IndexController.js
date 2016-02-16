@@ -558,7 +558,14 @@ var GlobalMap = React.createClass({
     },
 
     appendMap: function () {
-      var myFollowers = this.state.data;
+
+      if (this.state.appended) {
+        return;
+      }
+
+      this.setState({appended: true})
+
+    var myFollowers = this.state.data;
 
   
 
@@ -566,8 +573,8 @@ var GlobalMap = React.createClass({
     height = 500;
 
 
-//ADD SVG
-var svg = d3.select("#globalMap").append("svg")
+    //ADD SVG
+    var svg = d3.select("#globalMap").append("svg")
     .attr("width", width)
     .attr("height", height)
     .classed("map", true)
