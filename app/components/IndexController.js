@@ -314,6 +314,8 @@ var SocialNetwork = React.createClass({
       followerObj.lastname = user.strava.details.lastname
       followerObj.img = user.strava.details.profile
       followerObj.class = "user"
+      followerObj.country = user.strava.details.country
+      followerObj.followerNumber = user.strava.followers.length
       newLinks.push(followerObj)
 
       //FOR EACH FOLLOWER
