@@ -73,7 +73,7 @@ var ControlContainer = React.createClass({
             </div>
 
             <p className="userdata"> Hi {user.strava.details.firstname} from {user.strava.details.city} </p>
-
+            <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world">Tweet Your Maps</a>
             <button className="btn btn-primary" onClick={this.setTab0}> See Your Athlete Social Network </button>
             <button className="btn btn-primary" onClick={this.setTab1}> View Your Global Follower Map </button>
             <a href="/logout" className="btn btn-primary"> Logout </a>
@@ -222,9 +222,9 @@ var SocialNetwork = React.createClass({
 
       links.forEach(function(link) {
       //USER NODE
-      link.source = nodes[link.source] || (nodes[link.source] /* Names the object */  = link /* adds a property called name */);
+      link.source = nodes[link.source] || (nodes[link.source] = {img: link.img, name: link.name, lastname: link.lastname, class: link.class});
       //FOLLOWER NODES
-      link.target = nodes[link.target] || (nodes[link.target] = link);
+      link.target = nodes[link.target] || (nodes[link.target] = {img: link.img, name: link.name, lastname: link.lastname});
       });
 
 
@@ -341,7 +341,8 @@ var SocialNetwork = React.createClass({
       tooltip.transition()
       .duration(200)
       .style("opacity", 0.7)
-      tooltip.html("Name: " + d.name + " " + d.lastname +  "<br>Country: " + d.country + "<br>Followers: " + d.followerNumber)
+      tooltip.html(d.name + " " + d.lastname)
+      //tooltip.html("Name: " + d.name + " " + d.lastname +  "<br>Country: " + d.country + "<br>Followers: " + d.followerNumber)
       .style("left", (d3.event.pageX + 10) + "px")     
       .style("top", (d3.event.pageY - 28) + "px");   
 
