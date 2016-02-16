@@ -11,14 +11,18 @@ var ControlContainer = React.createClass({
     },
 
     componentDidMount: function() {
-
       //GET FOLLOWERS FROM STRAVA
       var component = this;
       var url = "/data/1267887"
       $.getJSON(url, function(data) {
         console.log("received graphData")
+
+        var followers = changeCoord(data.strava.followers)
+
+        
+
         component.setState({graphData: data})
-        component.setState({mapData: data.strava.followers})
+        component.setState({mapData: followers})
       })
     },
 
@@ -77,6 +81,7 @@ var GlobalMap = React.createClass({
     },
 
     componentDidMount: function() {
+
       var component = this;
      if (this.state.data){
       component.appendMap()
@@ -85,12 +90,13 @@ var GlobalMap = React.createClass({
     },
 
     componentDidUpdate: function() {
+      console.log("moutned")
       this.appendMap()
     },
 
     appendMap: function () {
       var myFollowers = this.state.data;
-
+      console.log(myFollowers)
   
 
     var width = "90%",
@@ -182,8 +188,14 @@ function drawData () {
            .data(data)
            .enter()
            .append("circle")
-          .attr('cx', function(d) { return projection([d.long,d.lat])[0] })
-          .attr('cy', function(d) { return projection([d.long,d.lat])[1] })
+          .attr('cx', function(d) { 
+              return projection([d.long,d.lat])[0] 
+            
+          })
+          .attr('cy', function(d) { 
+              return projection([d.long,d.lat])[1] 
+
+          })
            .attr("r", function(d) {
             return 3;
            })
@@ -706,6 +718,66 @@ circle.on("mouseout", function(d) {
 
 
 });
+
+
+//EXTRA FUNCTIONS 
+
+function changeCoord (followers) {
+
+        var followers = followers;
+         
+        var lats = []
+        var longs = []
+
+        followers.map(function(follower) {
+            lats.push(follower.lat) 
+            longs.push(follower.long)
+        })
+
+        lats.sort(function(a,b) {
+          return a - b;
+        })
+
+        longs.sort(function(a,b) {
+          return a-b;
+        })
+        console.log(longs)
+
+        var newLats = [];
+        var newLongs = []
+        for (var i = 0; i < lats.length; i++) {
+          if (lats[i] === lats[i-1]) {
+            newLats.push(lats[i])
+          }
+        }
+
+        for (var i = 0; i < longs.length; i++) {
+            if (longs[i] === longs[i-1]) {
+            newLongs.push(longs[i])
+          }    
+        }
+
+        console.log(newLats)
+        console.log(newLongs)
+
+        function random () {
+
+          return (Math.random() * 6) - 3;
+        }
+        
+        followers.map(function(follower) {
+          if (newLats.indexOf(follower.lat) > -1) {
+            follower.lat += random()
+          }
+           if (newLongs.indexOf(follower.long) > -1) {
+            follower.long += random() 
+          }
+        })
+        
+        return followers;
+        }
+        
+        
 
 
 ReactDOM.render(<ControlContainer />, document.getElementById("react-holder"));

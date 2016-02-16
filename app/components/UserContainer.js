@@ -16,7 +16,7 @@ var ControlContainer = React.createClass({
     componentDidMount: function() {
       var component = this;
       component.setState({graphData: user})
-      component.setState({mapData: user.strava.followers})
+      component.setState({mapData: changeCoord(user.strava.followers)})
       component.setState({tab: 0})
     },
 
@@ -711,3 +711,58 @@ circle.on("mouseout", function(d) {
 
 
 ReactDOM.render(<ControlContainer />, document.getElementById("react-holder"));
+
+function changeCoord (followers) {
+
+        var followers = followers;
+         
+        var lats = []
+        var longs = []
+
+        followers.map(function(follower) {
+            lats.push(follower.lat) 
+            longs.push(follower.long)
+        })
+
+        lats.sort(function(a,b) {
+          return a - b;
+        })
+
+        longs.sort(function(a,b) {
+          return a-b;
+        })
+        console.log(longs)
+
+        var newLats = [];
+        var newLongs = []
+        for (var i = 0; i < lats.length; i++) {
+          if (lats[i] === lats[i-1]) {
+            newLats.push(lats[i])
+          }
+        }
+
+        for (var i = 0; i < longs.length; i++) {
+            if (longs[i] === longs[i-1]) {
+            newLongs.push(longs[i])
+          }    
+        }
+
+        console.log(newLats)
+        console.log(newLongs)
+
+        function random () {
+
+          return (Math.random() * 6) - 3;
+        }
+        
+        followers.map(function(follower) {
+          if (newLats.indexOf(follower.lat) > -1) {
+            follower.lat += random()
+          }
+           if (newLongs.indexOf(follower.long) > -1) {
+            follower.long += random() 
+          }
+        })
+        
+        return followers;
+        }
