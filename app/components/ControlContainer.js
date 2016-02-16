@@ -167,11 +167,17 @@ var SocialNetwork = React.createClass({
       newLinks.push(followerObj)
 
       if (follower.followers) {
+      
+
+        var counter = 0;
+        var finished = false;
+
       follower.followers.forEach(function(follower2) {
-
-
+        //IF FOLLOWER IS ONE OF MY FOLLOWERS 
       if (user.strava.followerIds.indexOf(follower2) > -1) {
-      var follower2Obj = {}
+
+      if (!finished) {
+         var follower2Obj = {}
       follower2Obj.source = follower.id;
       follower2Obj.target = follower2;
       follower2Obj.followerNumber = getValue(follower2, "followerNumber")
@@ -180,6 +186,14 @@ var SocialNetwork = React.createClass({
       follower2Obj.img = getValue(follower2, "profile");
       follower2Obj.country = getValue(follower2, "country")
       newLinks.push(follower2Obj)
+      counter += 1;
+      }  
+     
+
+
+      if (counter === 5 ) {
+        finished = true;
+      }
       }
 
 
@@ -246,6 +260,7 @@ var SocialNetwork = React.createClass({
 
 
 
+
       var force = d3.layout.force()
       .nodes(d3.values(nodes)) //CREATES AN ARRAY FROM OUR OBJECT
       .links(links) 
@@ -266,13 +281,26 @@ var SocialNetwork = React.createClass({
       .enter().append("line")
       .attr("class", "link");
 
+
+
+         var drag = force.drag()
+            .on("dragstart", dragstart);
+
+            function dblclick(d) {
+          d3.select(this).classed("fixed", d.fixed = false);
+        }
+
+        function dragstart(d) {
+          d3.select(this).classed("fixed", d.fixed = true);
+        }
+
       var node = svg.selectAll(".node")
       .data(force.nodes())
       .enter().append("g")
       .attr("class", "node")
       .on("mouseover",  mouseover)
       .on("mouseout", mouseout)
-      .call(force.drag); //MAKES IT DRAGGABLE
+      .call(drag); //MAKES IT DRAGGABLE
 
 
 
